@@ -6,4 +6,4 @@ const indexRoute = (req, res) => {
 }
 
 // export your module here e.g {indexRoute, yourNewModule}
-module.exports = {indexRoute};
+      export {indexRoute};

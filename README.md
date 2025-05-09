@@ -23,7 +23,7 @@ npm install morgan
 npm install express
 \`\`\`
 
-# The project structure is as follows:
+## The project structure is as follows:
 
 \`\`\`bash
 TC_BT_MINI_PROJECT_GROUP_3/
