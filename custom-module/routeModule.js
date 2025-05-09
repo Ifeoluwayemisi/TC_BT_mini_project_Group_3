@@ -18,4 +18,4 @@ res.status(201).json({
 });
 }
 // export your module here e.g {indexRoute, yourNewModule}
-export { indexRoute, createResource };
+      export {indexRoute, createResource};
