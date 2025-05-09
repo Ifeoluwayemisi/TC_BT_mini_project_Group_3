@@ -1,5 +1,7 @@
-const express = require('express');
-const app =express();
+// const express = require('express');
+// const app =express();
+import express from 'express';
+import { indexRoute, createResource } from './custom-module/routeModule.js';
 // Create your module in routeModule.js
 // add your module below e.g {indexRoute, yourNewModule}
 const {indexRoute} = require("./custom-module/routeModule");
@@ -9,6 +11,7 @@ app.use(express.json());
 
 // Follow the format below to create your route and your module as defined in routeModule.js file
 app.get("/", indexRoute)
+app.post("/create", createResource);
 
 
 // Server 
