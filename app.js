@@ -1,15 +1,14 @@
-
 import express from 'express';
+import { route408 } from './custom-module/408route.js';
 const app = express();
 // Create your module in routeModule.js inside custom-module folder
 // add your module below e.g {indexRoute, yourNewModule}
-import {indexRoute} from './custom-module/routeModule.js';
 const port = 5000;
 // Middleware
 app.use(express.json());
 
 // Follow the format below to create your route and your module as defined in routeModule.js file
-app.get("/", indexRoute)
+app.get("/408", route408)
 
 
 // Server 
