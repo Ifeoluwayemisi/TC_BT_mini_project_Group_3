@@ -5,7 +5,7 @@ const indexRoute = (req, res) => {
 };
 
 const noContentRoute = (req, res) => {
-  res.status(204).send(); // 204 No Content
+  res.status(204).send();
 };
 
 // export your module here e.g {indexRoute, yourNewModule}
