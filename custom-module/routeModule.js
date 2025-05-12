@@ -1,5 +1,3 @@
-// Custom-module/routeModule.js
-
 // indexRoute function
 const indexRoute = (req, res) => {
     res.send("Welcome to group 3 mini project");
@@ -11,8 +9,21 @@ const indexRoute = (req, res) => {
       title: '200 OK',
       description: 'The request has succeeded.'
     });
-  };
+  }
+  
+  // Route Handler for handling resource creation
+  const createResource = (req, res) => {
+    const newResource = {
+      id: Date.now(),  
+      ...req.body      
+    };
+  
+    res.status(201).json({
+      message: "Resource created successfully",
+      data: newResource
+    });
+  }
   
   // Export modules
-  export { indexRoute, route200 };
+  export { indexRoute, route200, createResource };
   
