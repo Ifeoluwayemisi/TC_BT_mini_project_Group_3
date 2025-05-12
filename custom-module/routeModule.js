@@ -5,5 +5,6 @@ const indexRoute = (req, res) => {
     res.send("Welcome to group 3 mini project");
 }
 
+
 // export your module here e.g {indexRoute, yourNewModule}
       export {indexRoute};
