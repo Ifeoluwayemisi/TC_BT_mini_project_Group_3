@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Follow the format below to create your route and your module as defined in routeModule.js file
 app.get("/", indexRoute)
-
+import { serviceUnavailableHandler } from './custom-module/routeModule.js';
 
 // Server 
 app.listen(port, () => {

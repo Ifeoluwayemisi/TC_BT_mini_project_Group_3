@@ -4,6 +4,11 @@
 const indexRoute = (req, res) => {
     res.send("Welcome to group 3 mini project");
 }
+const serviceUnavailableHandler = (req, res) => {
+    res.status(503).json({
+        message: "Service temporarily Unavailable. Please try again later"
+    });
+};
 
 // export your module here e.g {indexRoute, yourNewModule}
-      export {indexRoute};
+      export {indexRoute, serviceUnavailableHandler};
