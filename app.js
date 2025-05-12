@@ -1,20 +1,19 @@
-
 import express from 'express';
 const app = express();
-// Create your module in routeModule.js inside custom-module folder
-// add your module below e.g {indexRoute, yourNewModule}
-import {route200} from './custom-module/routeModule.js';
+// Import the route200 module from routeModule.js inside the custom-module folder
+import { route200 } from './custom-module/routeModule.js';
+
 const port = 5000;
-// Middleware
+
+// Middleware for parsing JSON requests
 app.use(express.json());
 
-// Follow the format below to create your route and your module as defined in routeModule.js file
-app.get("/200", route200)
+// Define the /200 route using the route200 handler
+app.get("/200", route200);
 
-
-// Server 
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is active on port: ${port}`);
+  console.log(`Server is active on port: ${port}`);
 }).on('error', (err) => {
-    console.error(`Error starting server: ${err}`);
+  console.error(`Error starting server: ${err}`);
 });
