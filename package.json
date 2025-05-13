@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Ifeoluwayemisi/TC_BT_mini_project_Group_3#readme",
   "dependencies": {
-    "express": "^5.1.0",
+    "express": "^4.21.2",
     "morgan": "^1.10.0"
   }
 }
