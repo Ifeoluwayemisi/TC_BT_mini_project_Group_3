@@ -54,5 +54,5 @@ const validateResponse = (req, res) => {
   };
   
   // Export modules
-  export { indexRoute, route200, createResource, noContentRoute,validateResponse, indexRoute };
+  export { indexRoute, route200, createResource, noContentRoute,validateResponse };
   

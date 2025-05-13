@@ -3,6 +3,7 @@ const app = express();
 
 // Import the necessary modules from routeModule.js
 import { indexRoute, route200, createResource, noContentRoute } from './custom-module/routeModule.js';
+import serverError from './custom-module/500error.js';
 import { Invalidmodule } from './custom-module/errorModule.js';
 import { route408 } from './custom-module/408route.js'; 
 
@@ -10,7 +11,7 @@ const port = 5000;
 
 // Middleware for parsing JSON requests
 app.use(express.json());
-app.use('/internal-error', serverError);
+
 
 // Handle the / route using the indexRoute handler
 app.get("/", indexRoute);
@@ -29,6 +30,7 @@ app.get("/408", route408);
 
 // Handling invalid routes using Invalidmodule handler
 app.use("*", Invalidmodule);  
+app.use('/internal-error', serverError);
 
 
 
