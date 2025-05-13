@@ -26,7 +26,7 @@ const indexRoute = (req, res) => {
   
   // New Route Handler for No Content (204)
   const noContentRoute = (req, res) => {
-    res.status(204).send();  // This sends a "No Content" status (204) with no body
+    res.status(204).send();  
   };
   
   // Export modules
