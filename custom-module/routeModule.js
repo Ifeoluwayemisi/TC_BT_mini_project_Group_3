@@ -22,6 +22,8 @@ const validateResponse = (req, res) => {
   if (name === "" || email === "" || password === "") {
     res.status(400).send("Fields cannot be empty");
   }
+
+  res.send("All fields are valid");
 };
 // export your module here e.g {indexRoute, yourNewModule}
 

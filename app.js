@@ -2,7 +2,7 @@ import express from 'express';
 const app = express();
 
 // Import the necessary modules from routeModule.js
-import { indexRoute, route200, createResource, noContentRoute } from './custom-module/routeModule.js';
+import { indexRoute, route200, createResource, noContentRoute,validateResponse } from './custom-module/routeModule.js';
 import serverError from './custom-module/500error.js';
 import { Invalidmodule } from './custom-module/errorModule.js';
 import { route408 } from './custom-module/408route.js'; 
@@ -25,12 +25,15 @@ app.get("/200", route200);
 // Handle the /no-content route using the noContentRoute handler
 app.get("/no-content", noContentRoute);
 
+app.post("/validate",validateResponse)
+
 // Handle the /408 route using the route408 handler
 app.get("/408", route408); 
 
 // Handling invalid routes using Invalidmodule handler
-app.use("*", Invalidmodule);  
 app.use('/internal-error', serverError);
+app.use("/*", Invalidmodule);  
+
 
 
 
