@@ -3,7 +3,7 @@ const indexRoute = (req, res) => {
     res.send("Welcome to group 3 mini project");
   }
   
-  // route200 function from get-request branch
+  // route200 function
   const route200 = (req, res) => {
     res.status(200).json({
       title: '200 OK',
@@ -14,8 +14,8 @@ const indexRoute = (req, res) => {
   // Route Handler for handling resource creation
   const createResource = (req, res) => {
     const newResource = {
-      id: Date.now(),  
-      ...req.body      
+      id: Date.now(),
+      ...req.body
     };
   
     res.status(201).json({
@@ -24,6 +24,11 @@ const indexRoute = (req, res) => {
     });
   }
   
+  // New Route Handler for No Content (204)
+  const noContentRoute = (req, res) => {
+    res.status(204).send();  // This sends a "No Content" status (204) with no body
+  };
+  
   // Export modules
-  export { indexRoute, route200, createResource };
+  export { indexRoute, route200, createResource, noContentRoute };
   
