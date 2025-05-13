@@ -5,10 +5,6 @@
 
 import express from "express";
 
-const app = express();
-
-app.use(express.json());
-
 // indexRoute function
 const indexRoute = (req, res) => {
   res.send("Welcome to group 3 mini project");
@@ -28,11 +24,8 @@ const validateResponse = (req, res) => {
   }
 };
 // export your module here e.g {indexRoute, yourNewModule}
-export { indexRoute };
-export { validateResponse };
 
-    res.send("Welcome to group 3 mini project");
-  }
+  
   
   // route200 function
   const route200 = (req, res) => {
@@ -61,5 +54,5 @@ export { validateResponse };
   };
   
   // Export modules
-  export { indexRoute, route200, createResource, noContentRoute };
+  export { indexRoute, route200, createResource, noContentRoute,validateResponse, indexRoute };
   
