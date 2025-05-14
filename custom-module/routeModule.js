@@ -16,14 +16,14 @@ const validateResponse = (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    res.status(400).send("Response incomplete, All fields are required");
+    return res.status(400).send("Response incomplete, all fields are required");
   }
 
   if (name === "" || email === "" || password === "") {
-    res.status(400).send("Fields cannot be empty");
+    return res.status(400).send("Fields cannot be empty");
   }
 
-  res.send("All fields are valid");
+  return res.status(200).send("All fields are valid");
 };
 // export your module here e.g {indexRoute, yourNewModule}
 
