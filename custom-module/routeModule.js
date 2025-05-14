@@ -1,7 +1,33 @@
+// Follow the format below to create your module according to your specification
+// Dont forget to use diffrent variable from the existing variable
+
+//Imported express, express middleware using modules according to ejs
+
+import express from "express";
+
 // indexRoute function
 const indexRoute = (req, res) => {
-    res.send("Welcome to group 3 mini project");
+  res.send("Welcome to group 3 mini project");
+};
+
+//Handling Incomplete, invalid or broken responses #statusCode: 400
+
+const validateResponse = (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    res.status(400).send("Response incomplete, All fields are required");
   }
+
+  if (name === "" || email === "" || password === "") {
+    res.status(400).send("Fields cannot be empty");
+  }
+
+  res.send("All fields are valid");
+};
+// export your module here e.g {indexRoute, yourNewModule}
+
+  
   
   // route200 function
   const route200 = (req, res) => {
@@ -26,9 +52,9 @@ const indexRoute = (req, res) => {
   
   // New Route Handler for No Content (204)
   const noContentRoute = (req, res) => {
-    res.status(204).send();  // This sends a "No Content" status (204) with no body
+    res.status(204).send();  
   };
   
   // Export modules
-  export { indexRoute, route200, createResource, noContentRoute };
+  export { indexRoute, route200, createResource, noContentRoute,validateResponse };
   

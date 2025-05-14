@@ -3,7 +3,7 @@ const app = express();
 const port = 5000;
 
 // Import route modules
-import { indexRoute, route200, createResource, noContentRoute } from './custom-module/routeModule.js';
+import { indexRoute, route200, createResource, noContentRoute, validateResponse } from './custom-module/routeModule.js';
 import { Invalidmodule } from './custom-module/errorModule.js';
 import { route408 } from './custom-module/408route.js';
 import serverError from './custom-module/500error.js';
@@ -17,6 +17,7 @@ app.post("/create", createResource);
 app.get("/200", route200);
 app.get("/no-content", noContentRoute);
 app.get("/408", route408);
+app.post("/validate", validateResponse);
 app.use("/internal-error", serverError);
 
 // Fallback for invalid routes
