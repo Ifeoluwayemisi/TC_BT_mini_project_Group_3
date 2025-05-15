@@ -1,4 +1,4 @@
-Express.js Mini Project – Group 3
+HTTP Status Code Mini Project – Group 3
 
 
 ## Overview
