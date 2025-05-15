@@ -8,6 +8,7 @@ import { Invalidmodule } from './custom-module/errorModule.js';
 import { route408 } from './custom-module/408route.js';
 import serverError from './custom-module/500error.js';
 import route405 from './custom-module/405error.js';
+import route503 from './custom-module/status503.js';
 
 
 // Middleware for parsing JSON requests
@@ -22,6 +23,7 @@ app.get("/408", route408);
 app.get("/validate", validateResponse);
 app.use("/internal-error", serverError);
 app.use("/405", route405);
+app.use("/503", route503); 
 
 // Fallback for invalid routes
 app.use("*", Invalidmodule);
