@@ -1,29 +1,27 @@
 import express from 'express';
 const app = express();
-
-// Import the necessary modules from routeModule.js
-import { indexRoute, route200, createResource, noContentRoute,validateResponse } from './custom-module/routeModule.js';
-import serverError from './custom-module/500error.js';
-import { Invalidmodule } from './custom-module/errorModule.js';
-import { route408 } from './custom-module/408route.js'; 
-
 const port = 5000;
+
+// Import route modules
+import { indexRoute, route200, createResource, noContentRoute, validateResponse } from './custom-module/routeModule.js';
+import { Invalidmodule } from './custom-module/errorModule.js';
+import { route408 } from './custom-module/408route.js';
+import serverError from './custom-module/500error.js';
+import route405 from './custom-module/405error.js';
+
 
 // Middleware for parsing JSON requests
 app.use(express.json());
 
-
-// Handle the / route using the indexRoute handler
+// Define routes
 app.get("/", indexRoute);
-
-// Handle the /create route using the createResource handler
 app.post("/create", createResource);
-
-// Handle the /200 route using the route200 handler
 app.get("/200", route200);
-
-// Handle the /no-content route using the noContentRoute handler
 app.get("/no-content", noContentRoute);
+app.get("/408", route408);
+app.get("/validate", validateResponse);
+app.use("/internal-error", serverError);
+app.use("/405", route405);
 
 app.post("/validate",validateResponse)
 
@@ -39,6 +37,11 @@ app.use("/*", Invalidmodule);
 
 
 
+// Error handler for uncaught errors
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong!" });
+});
 
 // Start the server
 app.listen(port, () => {
