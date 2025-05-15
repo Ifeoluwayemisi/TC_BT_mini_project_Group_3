@@ -103,8 +103,3 @@ npm start
 | Script  | Command       | Purpose                             |
 | ------- | ------------- | ----------------------------------- |
 | `start` | `node app.js` | Start the server in production mode |
-
-
-```
-
-
