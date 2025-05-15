@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 const app = express();
 const port = 5000;
 
@@ -11,8 +12,9 @@ import { route408 } from './custom-module/408route.js';
 import serverError from './custom-module/500error.js';
 import route405 from './custom-module/405error.js';
 
-// Middleware for parsing JSON requests
+// Middleware for parsing JSON and log HTTP requests 
 app.use(express.json());
+app.use(morgan('dev'));
 
 // Define routes
 app.get("/", indexRoute);

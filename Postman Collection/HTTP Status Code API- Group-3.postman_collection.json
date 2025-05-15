@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "bde3d354-1194-4ed1-8673-fae89ae7036c",
+		"name": "HTTP Status Code",
+		"description": "**Mini Project API - Group 3**\n\nThis API provides endpoints for basic resource management and status checking, designed for a mini project. It includes routes to:\n\n- Welcome users\n    \n- Create resources\n    \n- Validate input data\n    \n- Check server and service status (200, 204, 408, 405, 503)\n    \n- Handle errors gracefully with appropriate HTTP status codes\n    \n\nEach endpoint returns meaningful status codes and messages to simulate real-world API responses for development and testing purposes.\n\nYou can use this collection to explore and test all available routes and their expected behaviors.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43458703",
+		"_collection_link": "https://racheal-7945544.postman.co/workspace/Racheal's-Workspace~c520a5ae-00d9-420a-8bb6-cec29e341f7d/collection/43458703-bde3d354-1194-4ed1-8673-fae89ae7036c?action=share&source=collection_link&creator=43458703"
+	},
+	"item": [
+		{
+			"name": "Main Route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 Status Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains welcome message\", () => {\r",
+							"  pm.expect(pm.response.text()).to.include(\"Welcome\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201 Status Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {\r",
+							"  pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has success message\", () => {\r",
+							"  pm.expect(pm.response.json().message).to.eql(\"Resource created successfully\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains new resource data\", () => {\r",
+							"  pm.expect(pm.response.json().data).to.have.property(\"id\");\r",
+							"  pm.expect(pm.response.json().data.name).to.eql(\"John\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"secret\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "204 Status Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/no-content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"no-content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 Status Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 404 for invalid route\", () => {\r",
+							"  pm.response.to.have.status(404);\r",
+							"  pm.expect(pm.response.text()).to.include(\"Resources Could not found\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/*",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"*"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "408 Status Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/408",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"408"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "500 Status Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/internal-error",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"internal-error"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 Status Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response says fields are valid\", () => {\r",
+							"  pm.expect(pm.response.text()).to.eql(\"All fields are valid\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Jane\",\r\n  \"email\": \"jane@example.com\",\r\n  \"password\": \"mypassword\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/validate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 Status Code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/405",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"405"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "503 Status Code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 503\", () => {\r",
+							"  pm.response.to.have.status(503);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains Service Unavailable message\", () => {\r",
+							"  pm.expect(pm.response.json().error).to.eql(\"Service Unavailable\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/503",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"503"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
