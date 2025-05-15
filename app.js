@@ -29,6 +29,9 @@ app.post("/validate",validateResponse)
 
 // Handle the /408 route using the route408 handler
 app.get("/408", route408); 
+app.get("/503", serviceUnavailable);
+
+app.get("/503", serviceUnavailable);
 
 // Handling invalid routes using Invalidmodule handler
 app.use('/internal-error', serverError);

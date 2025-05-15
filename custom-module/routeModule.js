@@ -16,16 +16,16 @@ const validateResponse = (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    res.status(400).send("Response incomplete, All fields are required");
+    return res.status(400).send("Response incomplete, All fields are required");
   }
 
   if (name === "" || email === "" || password === "") {
-    res.status(400).send("Fields cannot be empty");
+    return res.status(400).send("Fields cannot be empty");
   }
 
-  res.send("All fields are valid");
+  return res.send("All fields are valid");
 };
-// export your module here e.g {indexRoute, yourNewModule}
+
 
   
   
@@ -54,7 +54,18 @@ const validateResponse = (req, res) => {
   const noContentRoute = (req, res) => {
     res.status(204).send();  
   };
+
+ // serviceUnavailable 
+
+const serviceUnavailable = (req, res) => {
+  res.status(503).json({
+    error: "Service Unavailable",
+    message: "The server is currently unable to handle the request due to temporary overload or maintenance."
+  });
+};
+
+
   
   // Export modules
-  export { indexRoute, route200, createResource, noContentRoute,validateResponse };
+  export { indexRoute, route200, createResource, noContentRoute,validateResponse,serviceUnavailable };
   
