@@ -86,10 +86,9 @@ TC_BT_MINI_PROJECT_GROUP_3/
     ├── 408route.js
     ├── 405error.js
     └── 500error.js
+```
 
-
-
-##📝 Scripts
+## Scripts
 
 The following scripts are added to the `package.`json`file:
 "scripts": {
